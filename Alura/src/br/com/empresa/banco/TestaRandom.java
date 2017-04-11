@@ -35,6 +35,14 @@ public class TestaRandom {
 		contas.add(c2);
 		contas.add(c3);
 		
+		for (Conta conta : contas) {
+			System.out.println(conta.getNumero() + "/" + conta.getNome() + "/" + conta.getSaldo());
+		}
+		
+		
+		System.out.println("************************************************************");
+		System.out.println("                  Collections.sort()");
+		System.out.println("************************************************************");
 //		Collections.sort(contas, cp);
 		Collections.sort(contas);
 		
