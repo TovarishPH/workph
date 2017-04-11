@@ -16,9 +16,7 @@ public class Banco {
 	 * @param c
 	 */
 	public void adicionaConta(Conta c){
-		Map<String, Conta> assoc = null;
-		assoc.put(c.getNome(), c);
-		this.setAssocNome(assoc);
+		this.assocNome.put(c.getNome(), c);
 		this.contas.add(c);
 	}
 	
@@ -44,8 +42,7 @@ public class Banco {
 	 * @return conta
 	 */
 	public Conta buscaPorNome(String nome){
-		
-		return null;
+		return this.assocNome.get(nome);
 	}
 	
 	public String getNomeDaInstituicao() {
