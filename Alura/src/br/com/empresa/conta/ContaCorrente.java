@@ -10,4 +10,10 @@ public class ContaCorrente extends Conta implements Tributavel {
 	public double calculaTributos() {
 		return this.getSaldo() * 0.01;
 	}
+
+	@Override
+	public int compareTo(Conta o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

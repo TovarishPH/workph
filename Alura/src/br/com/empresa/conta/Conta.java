@@ -1,6 +1,6 @@
 package br.com.empresa.conta;
 
-public abstract class Conta {
+public abstract class Conta implements Comparable<Conta>{
 
 	protected String nome;
 	protected double saldo;
@@ -54,6 +54,16 @@ public abstract class Conta {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public int compareTo(ContaPoupanca outraConta) {
+		if(this.getSaldo() > outraConta.getSaldo()){
+			return 1;
+		}else if( this.getSaldo() < outraConta.getSaldo()){
+			return -1;
+		}else{
+			return 0;
+		}
 	}
 
 }

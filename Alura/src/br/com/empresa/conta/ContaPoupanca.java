@@ -1,6 +1,6 @@
 package br.com.empresa.conta;
 
-public class ContaPoupanca extends Conta implements Comparable<ContaPoupanca> {
+public class ContaPoupanca extends Conta{
 
 	public void deposita(double valor){
 		this.saldo += valor - 0.10;
@@ -12,9 +12,8 @@ public class ContaPoupanca extends Conta implements Comparable<ContaPoupanca> {
 	}
 
 	@Override
-	public int compareTo(ContaPoupanca outraConta) {
-		if(this.saldo > outraConta.saldo) return -1;
-		if(this.saldo < outraConta.saldo) return +1;
-		return 0;
+	public int compareTo(Conta o) {
+		return this.getNome().compareTo(o.getNome());
 	}
+
 }
