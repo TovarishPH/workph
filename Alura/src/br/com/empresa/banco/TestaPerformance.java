@@ -11,6 +11,8 @@ public class TestaPerformance {
 		System.out.println("Iniciando..................");
 		
 		Collection<Integer> teste = new HashSet<Integer>();
+//		Collection<Integer> teste = new ArrayList<Integer>();
+		
 		long inicio = System.currentTimeMillis();
 		
 		int total = 30000;
