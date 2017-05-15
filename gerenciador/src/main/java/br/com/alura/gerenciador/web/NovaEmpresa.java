@@ -23,7 +23,7 @@ public class NovaEmpresa extends HttpServlet {
 		Empresa empresa = new Empresa(nome);
 		
 		// LOG de entrada
-		System.out.println(">>>>>> LOG. Empresa " + nome + " sendo adicionada.");
+		System.out.println(">>>>>> LOG. Empresa " + nome + " sendo adicionada. <<<<<<<");
 		
 		new EmpresaDAO().adiciona(empresa);
 		
@@ -31,7 +31,7 @@ public class NovaEmpresa extends HttpServlet {
 		writer.println("Empresa " + nome + " adicionada com sucesso!");
 		
 		//LOG de saida
-		System.out.println(">>>>>> LOG. Empresa" + nome + "adicionada.");
+		System.out.println(">>>>>> LOG. Empresa " + nome + " adicionada. <<<<<<<");
 	}
 
 }
