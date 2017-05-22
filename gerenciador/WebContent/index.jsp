@@ -13,7 +13,7 @@
 		Você está logado como <b>${loggedUser.email}</b></br>
 	</c:if>
 
-	<form action="fazTudo?tarefa=NovaEmpresa" method="post">
+	<form action="executa?tarefa=NovaEmpresa" method="post">
 		<p>Nome:</p><input type="text" name="nome"/></br>
 		<input type="submit" value="Enviar"/>
 	</form>
@@ -24,7 +24,7 @@
 		<input type="submit" value="Login">
 	</form>
 	
-	<form action="fazTudo?tarefa=Logout" method="post">
+	<form action="executa?tarefa=Logout" method="post">
 		<input type="submit" value="Logout" />
 	</form>
 </body>
