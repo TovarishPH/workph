@@ -50,6 +50,9 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="/produtos/produto/formulario">Adicionar um produto</a>
+	<!-- inline de c:url -->
+	<a href="<c:url value='/produto/formulario'></c:url>">Adicionar um produto</a>
+<%-- 	<c:url value="/produto/formulario" var="urlAdicionar"/> --%>
+<%-- 	<a href="${urlAdicionar}">Adicionar um produto</a> --%>
 </body>
 </html>
