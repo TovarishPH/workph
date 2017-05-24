@@ -35,7 +35,7 @@
 		<c:forEach var="p" items="${produtoList}" varStatus="st">
 			<tr id="produto${p.id}">
 				<td>${st.count}</td>
-				<td>${p.nome}</td>
+				<td>${p.nome.toUpperCase()}</td>
 				<td><fmt:setLocale value="pt_br"/><fmt:formatNumber value="${p.preco}" type="currency"/></td>
 				<td>${p.descricao}</td>
 				<td><fmt:formatDate pattern="EEEE,dd'de'MM'de'yyyy" value="${p.dataInicioVenda.time}"/></td>
