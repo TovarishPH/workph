@@ -48,10 +48,15 @@
 						<td>Não</td>
 					</c:otherwise>
 				</c:choose>
+				<td><a href="#" onclick="return removeProduto(${p.id})">Remover</a></td>
 			</tr>
 		</c:forEach>
 	</table>
 	<!-- inline de c:url -->
-	<a href="<c:url value='/produto/formulario'></c:url>"><fmt:message key="mensagem.novoProduto"/></a>
+	<a href="<c:url value='/produto/formulario'></c:url>">
+		<fmt:message key="mensagem.novoProduto"/>
+	</a>
+	
+	<c:import url="../_common/rodape.jsp" />
 </body>
 </html>
