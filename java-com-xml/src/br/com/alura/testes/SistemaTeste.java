@@ -9,27 +9,21 @@ import org.w3c.dom.NodeList;
 
 import br.com.alura.model.Produto;
 
-public class Sistema {
+public class SistemaTeste {
 
 	public static void main(String[] args) throws Exception {
 		
-		// contróis documento na memória
-		//cria fábrica
 		DocumentBuilderFactory fabrica = DocumentBuilderFactory.newInstance();
-		//cria instancia de documento
 		DocumentBuilder builder = fabrica.newDocumentBuilder();
-		//atribui à um objeto
-		Document document = builder.parse("src/vendas.xml");
+		Document documento = builder.parse("src/vendas.xml");
 		
-		//Exibindo a moeda de pagto da venda - atributo da tag venda
-		Element venda = document.getDocumentElement();
-		String moeda = venda.getAttribute("moeda");
-		System.out.println(" Moeda de pagto:" + moeda + "\n");
-
-		//Pegando o objeto produto
-		NodeList produtos = document.getElementsByTagName("produto");
+		//Moeda
+		String moeda = documento.getDocumentElement().getAttribute("moeda");
+		System.out.println(" Moeda:" + moeda);
 		
+		NodeList produtos = documento.getElementsByTagName("produto");
 		for(int i = 0;i < produtos.getLength(); i++){
+			
 			Element produto = (Element) produtos.item(i);
 			
 			String nome = produto.getElementsByTagName("nome").item(0).getTextContent();
@@ -38,7 +32,7 @@ public class Sistema {
 			Produto prod = new Produto(nome, preco);
 			
 			System.out.println(prod);
-			
 		}
+
 	}
 }
