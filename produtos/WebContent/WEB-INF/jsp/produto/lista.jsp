@@ -54,7 +54,7 @@
 	</table>
 	<!-- inline de c:url -->
 	<a href="<c:url value='/produto/formulario'></c:url>">
-		<fmt:message key="mensagem.novoProduto"/>
+		<fmt:message key="mensagem.novoProduto" />
 	</a>
 	
 	<c:import url="../_common/rodape.jsp" />
