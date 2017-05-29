@@ -37,7 +37,8 @@
 			<tr id="produto${p.id}">
 				<td>${st.count}</td>
 				<td>${p.nome.toUpperCase()}</td>
-				<td><fmt:setLocale value="pt_br"/><fmt:formatNumber value="${p.preco}" type="currency"/></td>
+				<!--  setLocale - este excelentíssimo senhor foi o causador de um baita problema com qualquer internacionalização abaixo dele -->
+				<td><!-- <fmt:setLocale value="pt_br"/> --><fmt:formatNumber value="${p.preco}" type="currency"/></td>
 				<td>${p.descricao}</td>
 				<td><fmt:formatDate pattern="EEEE,dd'de'MM'de'yyyy" value="${p.dataInicioVenda.time}"/></td>
 				<c:choose>
