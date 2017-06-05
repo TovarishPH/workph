@@ -10,6 +10,10 @@ public class Produto {
 		this.preco = preco;
 	}
 
+	public Produto() {
+		// construtor vazio
+	}
+
 	public String getNome() {
 		return nome;
 	}
