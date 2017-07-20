@@ -2,6 +2,8 @@ package br.com.alura.testes;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -16,32 +18,17 @@ public class LendoArquivoXMLComSTAX {
 		InputStream is = new FileInputStream("src/vendas.xml");
 		XMLInputFactory factory = XMLInputFactory.newInstance();
 		XMLEventReader eventos = factory.createXMLEventReader(is);
-
-		Produto produto;
-
+		
+		XMLEvent evento = eventos.nextEvent();
+		
 		while (eventos.hasNext()) {
-
-			XMLEvent evento = eventos.nextEvent();
-
-			if (evento.isStartElement()
-					&& evento.asStartElement().equals("produtos")) {
-				produto = criaUmProduto(eventos);
+			
+			if (evento.isStartElement() && evento.asStartElement().getName().getLocalPart().equals("produto")) {
+				Produto produto = new Produto();
+			}else if (evento.isStartElement() && evento.asStartElement().getName().getLocalPart().equals("preco")) {
+				
 			}
 		}
-	}
-
-	private static Produto criaUmProduto(XMLEventReader eventos) throws Exception {
-		Produto produto = new Produto();
-
-		while(eventos.hasNext()){
-			XMLEvent evento = eventos.nextEvent();
-			
-			if(evento.isStartElement() && evento.asStartElement().equals("nome")){
-				evento = eventos.nextEvent();
-				produto.setNome(evento.asCharacters().getData());
-			}
-			
-		}
-		return null;
+		
 	}
 }
