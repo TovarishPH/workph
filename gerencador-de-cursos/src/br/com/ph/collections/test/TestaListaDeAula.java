@@ -26,8 +26,10 @@ public class TestaListaDeAula {
         Collections.sort(aulas);
         System.out.println(aulas);
         System.out.println("Lista ordenada, com uso de compaarator:");
-        Comparator<Aula> comparador = new NovoComparadorDeAulas();
-        Collections.sort(aulas, comparador);
+        Comparator<Aula> novoComparadorDeAulas = new NovoComparadorDeAulas();
+        Collections.sort(aulas, novoComparadorDeAulas);
+        //Comparator Java8
+        //aulas.sort(Comparator.comparing(Aula::getTempo));
         System.out.println(aulas);
 
 	}
