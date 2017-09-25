@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import br.com.ph.collections.bean.Aluno;
 import br.com.ph.collections.bean.Aula;
 import br.com.ph.collections.bean.Curso;
 import br.com.ph.collections.utils.NovoComparadorDeAulas;
@@ -36,7 +37,5 @@ public class TestaCurso2 {
         
         System.out.println(javaColecoes);
         
-        
-
 	}
 }

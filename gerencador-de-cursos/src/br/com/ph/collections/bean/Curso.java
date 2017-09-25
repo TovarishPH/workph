@@ -1,14 +1,18 @@
 package br.com.ph.collections.bean;
 
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class Curso {
 
 	private String nome;
 	private String instrutor;
 	private List<Aula> aulas = new LinkedList<Aula>();
+	private Set<Aluno> alunos = new HashSet<Aluno>();
 	
 	public Curso(String nome, String instrutor) {
 		this.nome = nome;
@@ -27,6 +31,10 @@ public class Curso {
 		return Collections.unmodifiableList(aulas);
 	}
 	
+	public Set<Aluno> getAlunos() {
+		return Collections.unmodifiableSet(alunos);
+	}
+
 	public void adiciona(Aula aula){
 		this.aulas.add(aula);
 	}
@@ -47,5 +55,9 @@ public class Curso {
 	// Implementação do Java 8
 	public int getTempoTotal(){
 		return this.aulas.stream().mapToInt(Aula::getTempo).sum();
+	}
+
+	public void matricula(Aluno aluno) {
+		this.alunos.add(aluno);
 	}
 }
