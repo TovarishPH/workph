@@ -4,7 +4,9 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import br.com.ph.collections.bean.Aluno;
 import br.com.ph.collections.bean.Aula;
@@ -58,5 +60,15 @@ public class TestaCursoComAluno {
 		
 		System.out.println("O a1 é equals ao Turini?");
 		System.out.println(a1.equals(turini));
+		
+		System.out.println("***********************************************************");
+		
+		Set<Aluno> alunos = javaColecoes.getAlunos();
+		Iterator<Aluno> iterator = alunos.iterator();
+		
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+			
+		}
 	}
 }
