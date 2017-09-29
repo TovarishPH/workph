@@ -13,18 +13,32 @@ public class OrdenaProdutos {
 		produtos[3] = new Produto("Smart", 46000);
 		produtos[4] = new Produto("Fusca", 17000);
 
-		int maisBarato = 0;
-
-		for (int i = 0; i < produtos.length; i++) {
-			if (produtos[i].getPreco() < produtos[maisBarato].getPreco()) {
-				maisBarato = i;
-				
-			}
+		for (int i = 0; i < produtos.length; i++){
+			int menor = buscaMenorPreco(produtos, i);
+			Produto produtoAtual = produtos[i];
+			Produto produtoMaisBarato = produtos[menor];
+			produtos[i] = produtoMaisBarato;
+			produtos[menor] = produtoAtual;
 		}
+		
+		for (Produto produto : produtos) {
+			System.out.println(produto.getNome() + " " + produto.getPreco());
+		}
+		
+//		System.out.println("Produto mais barato: "
+//				+ produtos[maisBarato].getNome() + ", valor: "
+//				+ produtos[maisBarato].getPreco() + ".");
+	}
 
-		System.out.println("Produto mais barato: "
-				+ produtos[maisBarato].getNome() + ", valor: "
-				+ produtos[maisBarato].getPreco() + ".");
+	private static int buscaMenorPreco(Produto[] produtos, int inicio) {
+		int maisBarato = 0;
+		for (int atual = inicio; atual < produtos.length; atual++) {
+			if (produtos[atual].getPreco() < produtos[maisBarato].getPreco()) {
+				maisBarato = atual;
+			}
+			
+		}
+		return maisBarato;
 	}
 
 }
