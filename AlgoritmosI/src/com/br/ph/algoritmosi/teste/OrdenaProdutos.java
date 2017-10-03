@@ -15,20 +15,27 @@ public class OrdenaProdutos {
 		
 		
 		
-		for(int atual = 0; atual < produtos.length; atual++){
-			
-			int maisBarato = buscaProdutoMaisBarato(produtos, atual, produtos.length);
-			
-			Produto produtoAtual = produtos[atual];
-			Produto produtoMaisBarato = produtos[maisBarato];
-			produtos[atual] = produtoMaisBarato;
-			produtos[maisBarato] = produtoAtual;
-		}
+		ordenaProdutos(produtos, produtos.length);
+		
+		System.out.println("************ ************* ************* *************");
 		
 		for (int i = 0; i < produtos.length; i++) {
 			System.out.println(produtos[i].getNome() + ", R$" + produtos[i].getPreco());
 		}
 		
+	}
+
+	private static void ordenaProdutos(Produto[] produtos, int quantidadeDeElementos) {
+		for(int atual = 0; atual < quantidadeDeElementos - 1; atual++){
+			System.out.println("Posição " + atual);
+			int maisBarato = buscaProdutoMaisBarato(produtos, atual, quantidadeDeElementos);
+			System.out.println("Trocando " + atual + " com " + maisBarato);
+			Produto produtoAtual = produtos[atual];
+			Produto produtoMaisBarato = produtos[maisBarato];
+			System.out.println("Trocando " + produtoAtual.getNome() + " com " + produtoMaisBarato.getNome());
+			produtos[atual] = produtoMaisBarato;
+			produtos[maisBarato] = produtoAtual;
+		}
 	}
 
 	private static int buscaProdutoMaisBarato(Produto[] produtos, int inicio, int fim) {
