@@ -31,14 +31,14 @@ public class OrdenacaoTeste {
 		
 		//Insertion Sort
 		for(int atual = 1; atual < produtos.length; atual++){
-			
-			while(atual > 0 && (produtos[atual].getPreco() < produtos[atual - 1].getPreco())){
-				Produto prodAtual = produtos[atual];
-				Produto prodAnterior = produtos[atual - 1];
-				produtos[atual] = prodAnterior;
-				produtos[atual -1] = prodAtual;
+			int analisado = atual;
+			while(analisado > 0 && (produtos[analisado].getPreco() < produtos[analisado - 1].getPreco())){
+				Produto prodAtual = produtos[analisado];
+				Produto prodAnterior = produtos[analisado - 1];
+				produtos[analisado] = prodAnterior;
+				produtos[analisado -1] = prodAtual;
 				// joga o atual do while uma posição acima/esquerda para dar continuidade 
-				atual--;
+				analisado--;
 			}
 		}
 		
