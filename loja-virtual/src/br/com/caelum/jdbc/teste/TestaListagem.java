@@ -7,15 +7,14 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import br.com.caelum.jdbc.conexao.ConnectionPool;
+
 public class TestaListagem {
 
 	public static void main(String[] args) throws SQLException, ClassNotFoundException {
 		
-		//DriverManager.registerDriver(new jdbcDriver());
-		//Class.forName("org.hsqldb.jdbcDriver");
-		//Connection con = DriverManager.getConnection("jdbc:hsqldb:hsql://localhost/loja-virtual", "SA", "");
-		//Class.forName("org.gjt.mm.mysql.Driver");
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost/loja_virtual", "root", "root");
+		ConnectionPool connectionPool = new ConnectionPool();
+		Connection con = connectionPool.getConnection();
 		
 		Statement stmt = con.createStatement();
 		boolean resultado = stmt.execute("select * from Produto");
