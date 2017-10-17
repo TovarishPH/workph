@@ -18,18 +18,30 @@ public class TestaInsercao {
 //		boolean resultado = stmt.execute("insert into Produto (nome, descricao) values ('notebook', 'notebook i5')", stmt.RETURN_GENERATED_KEYS);
 //		System.out.println(resultado);
 		
-		Connection con = DataBase.getConnection();
-		String sql = "insert into Produto (nome, descricao) values (?, ?)";
-		PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-		adiciona("mochila", "mochila de alpinismo", pstmt);
-		adiciona("televisor", "tv led 42''", pstmt);
+		try(Connection con = DataBase.getConnection()){
+			con.setAutoCommit(false);
+			String sql = "insert into Produto (nome, descricao) values (?, ?)";
+			
+			try(PreparedStatement pstmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);){
+				adiciona("mochila", "mochila de alpinismo", pstmt);
+				adiciona("blueray", "full hdmi", pstmt);
+				con.commit();
+				System.out.println("Commit de dados efetuado");
+				
+			}catch(Exception e){
+				e.printStackTrace();
+				con.rollback();
+				System.out.println("Rollback efetuado!");
+			}
+		}
 		
-		pstmt.close();
-		con.close();
 	}
 
 	private static void adiciona(String nome, String descricao,
 			PreparedStatement pstmt) throws SQLException {
+		if(nome.equals("blueray")){
+			throw new IllegalArgumentException("Deu ruim");
+		}
 		pstmt.setString(1, nome);
 		pstmt.setString(2, descricao);
 		boolean resultado = pstmt.execute();
