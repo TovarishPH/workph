@@ -16,7 +16,7 @@ public class TesteComProduto2 {
 			con.setAutoCommit(false);
 			ProdutoDAO2 dao = new ProdutoDAO2(con);
 			
-			Produto produto = new Produto("smartphone", "smartphone motorola G5");
+			Produto produto = new Produto("mesa azul", "mesa de jantar");
 			
 			//dao.salva(produto);
 			

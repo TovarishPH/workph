@@ -20,8 +20,7 @@ public class ProdutosDAO {
 
 	public void salva(Produto produto) throws SQLException {
 		String sql = "insert into Produto(nome, descricao) values (?, ?)";
-		try (PreparedStatement ps = con.prepareStatement(sql,
-				Statement.RETURN_GENERATED_KEYS)) {
+		try (PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
 			ps.setString(1, produto.getNome());
 			ps.setString(2, produto.getDescricao());
@@ -55,6 +54,28 @@ public class ProdutosDAO {
 					prod.setId(rs.getInt(1));
 					produtos.add(prod);
 					//System.out.println("Produto: [" + prod.getId() + "] " + prod.getNome() + " - " + prod.getDescricao());
+				}
+			}
+		}
+		
+		return produtos;
+	}
+
+	public List<Produto> listaPorCategoria(Integer categoria) throws SQLException {
+		List<Produto> produtos = new ArrayList<Produto>();
+		
+		String sql = "select * from Produto where categoria_id = ?";
+		
+		try(PreparedStatement ps = con.prepareStatement(sql)){
+			ps.setInt(1, categoria);
+			ps.execute();
+			
+			try(ResultSet rs = ps.getResultSet()){
+				
+				while(rs.next()){
+					Produto prod = new Produto(rs.getString(2), rs.getString(3));
+					prod.setId(rs.getInt(1));
+					produtos.add(prod);
 				}
 			}
 		}
