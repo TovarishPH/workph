@@ -16,16 +16,15 @@ public class TestaCategorias {
 		
 		try(Connection con = new ConnectionPool().getConnection()){
 			CategoriaDAO dao = new CategoriaDAO(con);
-			ProdutosDAO pdao = new ProdutosDAO(con);
 			
-			List<Categoria> categorias = dao.lista();
+			List<Categoria> categoriasComProduto = dao.listaComPordutos();
 			
-			for (Categoria categoria : categorias) {
-				System.out.println("Categoria " + categoria);
-				for (Produto produto : pdao.listaPorCategoria(categoria.getId())){
-					System.out.println(produto);
-				}//for produto
-			}//fro categoria
+			for (Categoria categoria : categoriasComProduto) {
+				System.out.println(categoria);
+				for (Produto produto : categoria.getProdutos()) {
+					System.out.println(produto.getNome());
+				}
+			}
 		}
 	}
 }
