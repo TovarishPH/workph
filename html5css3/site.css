@@ -1,0 +1,15 @@
+body{
+	font-family: "Crimson Text", sreif;
+	background-color: #F2FFFC;
+}
+h1, h2{
+	font-family: "Open Sans Condensed", sans-serif;
+}
+h1{
+	text-align: center;
+	color: #FFF;
+	background-color: #851944;
+}
+p{
+	text-align: justify;	
+}
