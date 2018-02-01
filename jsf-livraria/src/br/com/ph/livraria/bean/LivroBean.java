@@ -1,15 +1,21 @@
 package br.com.ph.livraria.bean;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 
 import br.com.ph.livraria.dao.DAO;
+import br.com.ph.livraria.model.Autor;
 import br.com.ph.livraria.model.Livro;
 
 @ManagedBean
+@ViewScoped
 public class LivroBean {
 	
 	private Livro livro = new Livro();
+	private Integer autorId;
 
 	public Livro getLivro(){
 		return this.livro;
@@ -28,5 +34,27 @@ public class LivroBean {
         }
 
         new DAO<Livro>(Livro.class).adiciona(this.livro);
+	}
+	
+	public void gravaAutor(){
+		Autor autor = new DAO<Autor>(Autor.class).buscaPorId(this.autorId);
+		System.out.println(">>>>>" + autor.getNome());
+		this.livro.adicionaAutor(autor);
+	}
+	
+	public List<Autor> getAutores(){
+		return new DAO<Autor>(Autor.class).listaTodos();
+	}
+	
+	public List<Autor> getAutoresDoLivro(){
+		return this.livro.getAutores();
+	}
+
+	public Integer getAutorId() {
+		return autorId;
+	}
+
+	public void setAutorId(Integer autorId) {
+		this.autorId = autorId;
 	}
 }
