@@ -50,6 +50,11 @@ public class LivroBean {
 		this.livro.adicionaAutor(autor);
 	}
 	
+	public String formAutor(){
+		System.out.println("Chamando o formulário do Autor");
+		return "autor?faces-redirect=true";
+	}
+	
 	/**
 	 * Valida se o ISBN comeca com digito 1
 	 */
