@@ -52,9 +52,9 @@
 				</h:commandButton>
 					
 					<!-- com faces-redirect no método no bean -->
-<!-- 				<h:commandLink value="Cadastrar novo Autor"  action="#{livroBean.formAutor}" immediate="true"/> -->
+				<h:commandLink value="Cadastrar novo Autor"  action="#{livroBean.formAutor}" immediate="true"/>
 					<!-- com faces-redirect direto no xhtml -->
-					<h:commandLink value="Cadastrar novo Autor"  action="autor?faces-redirect=true" immediate="true"/>
+<!-- 					<h:commandLink value="Cadastrar novo Autor"  action="autor?faces-redirect=true" immediate="true"/> -->
 				
 				<h:dataTable id="tabelaAutores" value="#{livroBean.autoresDoLivro}" var="autor">
 					<h:column>
