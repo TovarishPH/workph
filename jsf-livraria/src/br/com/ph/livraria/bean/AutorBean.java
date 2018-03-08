@@ -27,4 +27,8 @@ public class AutorBean {
 		//Usando a classe utilitária RedirectView
 		return new RedirectView("livro");
 	}
+	
+	public RedirectView voltar(){
+		return new RedirectView("livro");
+	}
 }
