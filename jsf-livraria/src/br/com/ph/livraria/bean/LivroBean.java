@@ -38,16 +38,41 @@ public class LivroBean {
 //			throw new RuntimeException("Livro deve ter pelo menos um Autor");
             return;
         }else{
-        	new DAO<Livro>(Livro.class).adiciona(this.livro);
+        	if(this.livro.getId() == null){
+        		new DAO<Livro>(Livro.class).adiciona(this.livro);
+        	}else {
+				new DAO<Livro>(Livro.class).atualiza(this.livro);
+			}
+        	
         	this.livro = new Livro();
         }
 
+	}
+	
+	public void remover(Livro livro){
+		System.out.println("Removendo livro " + livro.getTitulo());
+		new DAO<Livro>(Livro.class).remove(livro);
+		this.getLivros().remove(livro);
+	}
+	
+	/**
+	 * Carrega um livro para alteração
+	 * @param livro
+	 * @return livro
+	 */
+	public void carregar(Livro livro){
+		System.out.println("Carregando livro " + livro.getTitulo() + " para edição.");
+		this.livro = livro;
 	}
 	
 	public void gravaAutor(){
 		Autor autor = new DAO<Autor>(Autor.class).buscaPorId(this.autorId);
 		System.out.println(">>>>>" + autor.getNome());
 		this.livro.adicionaAutor(autor);
+	}
+	
+	public void removeAutorDoLivro(Autor autor){
+		this.livro.removeAutor(autor);
 	}
 	
 	public String formAutor(){
