@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <ui:composition template="_template.xhtml">
@@ -16,6 +17,26 @@
 						<h:commandButton value="Gravar" action="#{autorBean.gravar}" />
 						<h:commandButton value="Voltar" action="#{autorBean.voltar}" />
 					</h:panelGrid>
+				</fieldset>
+			</h:form>
+			
+			<h:form>
+				<fieldset>
+					<legend>Autores Cadastrados</legend>
+					<h:dataTable id="tabelaAutor" var="autor" value="#{autorBean.autores}">
+						<h:column>
+							<f:facet name="header">Autor</f:facet>
+							<h:outputText value="#{autor.nome}"/>
+						</h:column>
+						
+						<h:column>
+							<h:commandLink value="Remover" action="#{autorBean.removerAutor(autor)}"/>
+						</h:column>
+						
+						<h:column>
+							<h:commandLink value="Alterar" action="#{autorBean.alterarAutor(autor)}"/>
+						</h:column>
+					</h:dataTable>
 				</fieldset>
 			</h:form>
 		</ui:define>
