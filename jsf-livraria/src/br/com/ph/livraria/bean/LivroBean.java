@@ -56,12 +56,21 @@ public class LivroBean {
 	}
 	
 	/**
+	 * Em desuso com a implementação do setPropertyActionListener
 	 * Carrega um livro para alteração
 	 * @param livro
 	 * @return livro
 	 */
 	public void carregar(Livro livro){
 		System.out.println("Carregando livro " + livro.getTitulo() + " para edição.");
+		this.livro = livro;
+	}
+	
+	/**
+	 * Setter para o uso de setPropertyActionListener
+	 * @param livro
+	 */
+	public void setLivro(Livro livro){
 		this.livro = livro;
 	}
 	
