@@ -19,6 +19,7 @@ import br.com.ph.livraria.model.Livro;
 public class LivroBean {
 	
 	private Livro livro = new Livro();
+	private Integer livroId;
 	private Integer autorId;
 
 	public Livro getLivro(){
@@ -66,6 +67,11 @@ public class LivroBean {
 		this.livro = livro;
 	}
 	
+	public void carregaLivroPeloId(){
+		System.out.println("Carregando livro pelo ID:" + this.livroId);
+		this.livro = new DAO<Livro>(Livro.class).buscaPorId(this.livroId);
+	}
+	
 	/**
 	 * Setter para o uso de setPropertyActionListener
 	 * @param livro
@@ -109,6 +115,14 @@ public class LivroBean {
 	
 	public List<Livro> getLivros(){
 		return new DAO<Livro>(Livro.class).listaTodos();
+	}
+
+	public Integer getLivroId() {
+		return livroId;
+	}
+
+	public void setLivroId(Integer livroId) {
+		this.livroId = livroId;
 	}
 
 	public Integer getAutorId() {

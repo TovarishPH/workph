@@ -1,6 +1,5 @@
 package br.com.ph.livraria.bean;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,6 +14,7 @@ import br.com.ph.livraria.util.RedirectView;
 public class AutorBean {
 
 	private Autor autor = new Autor();
+	private Integer autorId;
 
 	public Autor getAutor() {
 		return autor;
@@ -22,6 +22,11 @@ public class AutorBean {
 	
 	public List<Autor> getAutores(){
 		return new DAO(Autor.class).listaTodos();
+	}
+	
+	public void carregaAutorPeloId(){
+		System.out.println("Carregando autor" + this.autorId);
+		this.autor = new DAO<Autor>(Autor.class).buscaPorId(this.autorId);
 	}
 	
 	public void removerAutor(Autor autor){
@@ -54,5 +59,13 @@ public class AutorBean {
 	
 	public RedirectView voltar(){
 		return new RedirectView("livro");
+	}
+
+	public Integer getAutorId() {
+		return autorId;
+	}
+
+	public void setAutorId(Integer autorId) {
+		this.autorId = autorId;
 	}
 }
