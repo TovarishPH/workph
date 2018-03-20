@@ -10,6 +10,7 @@
 		
 		<class>br.com.ph.livraria.model.Livro</class>
 		<class>br.com.ph.livraria.model.Autor</class>
+		<class>br.com.ph.livraria.model.Usuario</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
