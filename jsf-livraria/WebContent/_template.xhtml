@@ -10,7 +10,8 @@
       <h:body>
       	<div id="cabecalho" style="background-color: black">
       		<h:graphicImage library="img" name="Stalin.png" />
-      		<h1 style="color: white"><marquee><ui:insert name="titulo"></ui:insert></marquee></h1>
+      		<h1 style="color: white"><ui:insert name="titulo"></ui:insert></h1>
+      		<h:outputText style="color: white" value="#{sessionScope['usuarioLogado'].email}"/>
       	</div>
       	
       	<div id="conteudo">

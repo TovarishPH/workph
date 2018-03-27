@@ -23,21 +23,24 @@ public class Autorizador implements PhaseListener {
 		
 		System.out.println("::: Página: " + nomeDaPagina + " :::");
 		
+		//Se a tentaiva de acesso for na pagina de login, tudo ocorre normal
+		//em qualquer outra pagina, não havera acesso
 		if("/login.xhtml".equals(nomeDaPagina)){
 			return;
 		}
 		
-		// Trabalhando o usuario logado
+		// verifica usuario na sessao e atribui uma variavel
 		Usuario usuarioLogado = (Usuario) context.getExternalContext().getSessionMap().get("usuarioLogado");
 		
 		if(usuarioLogado != null){
 			return;
 		}
 		
-		//Estabelecendo navegação
+		//Estabelece navegacao caso o processo de login nao aconteca corretamente
 		NavigationHandler nav = context.getApplication().getNavigationHandler();
+		//volta para a pagina de login
 		nav.handleNavigation(context, null, "/login?faces-redirect=true");
-		
+		//renderiza resposta de navegacao
 		context.renderResponse();
 	}
 
