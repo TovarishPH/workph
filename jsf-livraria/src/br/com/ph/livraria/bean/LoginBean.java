@@ -1,5 +1,6 @@
 package br.com.ph.livraria.bean;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -29,7 +30,18 @@ public class LoginBean {
 			return "livro?faces-redirect=true";
 		}
 		
-		return null;
+		context.getExternalContext().getFlash().setKeepMessages(true);
+		context.addMessage(null, new FacesMessage("Usuário ou Senha incorretos"));
+		
+		return "login?faces-redirect=true";
+	}
+	
+	public String deslogar(){
+		System.out.println("::: Deslogando... :::");
+		FacesContext context = FacesContext.getCurrentInstance();
+		context.getExternalContext().getSessionMap().remove("usuarioLogado");
+		
+		return "login?faces-redirect=true";
 	}
 
 }

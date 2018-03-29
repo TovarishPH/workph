@@ -10,6 +10,9 @@
       <h:body>
       	<div id="cabecalho" style="background-color: black">
       		<h:graphicImage library="img" name="Stalin.png" />
+      		<h:form>
+      			<h:commandLink value="Logout" action="#{loginBean.deslogar}" rendered="#{usuarioLogado != null}"/>
+      		</h:form>
       		<h1 style="color: white"><ui:insert name="titulo"></ui:insert></h1>
       		<h:outputText style="color: white" value="#{sessionScope['usuarioLogado'].email}"/>
       	</div>
