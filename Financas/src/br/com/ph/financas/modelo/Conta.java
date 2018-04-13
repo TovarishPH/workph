@@ -20,6 +20,16 @@ public class Conta {
 		// TODO Auto-generated constructor stub
 	}
     
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "[\nNome: " + titular 
+				+ " \nBanco: " + banco
+				+ " \nAgencia: " + agencia
+				+ " \nConta: " + numero
+				+ "\n]";
+    }
+    
 	public Integer getId() {
 		return id;
 	}
